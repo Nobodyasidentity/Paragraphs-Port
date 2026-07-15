@@ -7,8 +7,7 @@
 	"authors": [
 		"Nobodyasidentity"
 	],
-	"license": "CC0-1.0",
-	"icon": "assets/paragraphs-port/icon.png",
+	"icon": "icon.png",
 	"environment": "*",
 	"entrypoints": {
 		"main": [
