@@ -1,0 +1,16 @@
+{
+	"required": true,
+	"package": "io.github.nobodyasidentity.paragraphs.mixin",
+	"compatibilityLevel": "JAVA_25",
+	"mixins": [
+		"ChatFormattingMixin",
+		"ServerGamePacketListenerImplMixin",
+		"StringUtilMixin"
+	],
+	"injectors": {
+		"defaultRequire": 1
+	},
+	"overwrites": {
+		"requireAnnotations": true
+	}
+}
