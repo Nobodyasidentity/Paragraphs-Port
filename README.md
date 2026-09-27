@@ -14,3 +14,6 @@ Client & server:      fully works
 No client, server:    does nothing, vanilla
 No client, no server: that's just vanilla
 ```
+
+## Developer info
+Everything inside `net/` and `org/` is excluded from the final JAR as they are just there so that the Fabric compiler won't complain.

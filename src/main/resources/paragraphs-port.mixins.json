@@ -1,6 +1,6 @@
 {
 	"required": true,
-	"package": "io.github.nobodyasidentity.paragraphs.mixin",
+	"package": "${maven_group}.mixin",
 	"compatibilityLevel": "JAVA_25",
 	"mixins": [
 		"ChatFormattingMixin",

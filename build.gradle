@@ -6,7 +6,13 @@ plugins {
 version = project.mod_version
 group = project.maven_group
 
-repositories {}
+base {
+    archivesName = project.mod_id
+}
+
+repositories {
+	mavenCentral()
+}
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -14,13 +20,18 @@ dependencies {
 }
 
 processResources {
-	def versionProperties = [
-		"version": project.version,
-		"minecraft_version": project.minecraft_version
+	def properties = [
+		"mod_version": project.mod_version,
+		"minecraft_version": project.minecraft_version,
+		"mod_name": project.mod_name,
+		"mod_id": project.mod_id,
+		"mod_name": project.mod_name,
+		"mod_author": project.mod_author,
+		"maven_group": project.maven_group
 	]
-	inputs.properties versionProperties
-	filesMatching(["fabric.mod.json", "META-INF/neoforge.mods.toml", "META-INF/mods.toml"]) {
-		expand versionProperties
+	inputs.properties properties
+	filesMatching(["fabric.mod.json", "META-INF/neoforge.mods.toml", "META-INF/mods.toml", "paragraphs-port.mixins.json"]) {
+		expand properties
 	}
 }
 
@@ -30,12 +41,25 @@ tasks.withType(JavaCompile).configureEach {
 
 java {
 	withSourcesJar()
-
 	sourceCompatibility = JavaVersion.VERSION_25
 	targetCompatibility = JavaVersion.VERSION_25
 }
 
 jar {
+	archiveFileName = "${project.mod_id}-${project.mod_version}+${project.minecraft_version}.jar"
+	exclude 'net/**'
+	manifest {
+		attributes([
+			"Specification-Title": project.mod_id,
+			"Specification-Vendor": project.mod_author,
+			"Specification-Version": "1",
+			"Implementation-Title": project.name,
+			"Implementation-Version": project.mod_version,
+			"Implementation-Vendor": project.mod_author,
+			"Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
+		])
+	}
+
 	def projectName = project.name
 	inputs.property "projectName", projectName
 
@@ -43,12 +67,16 @@ jar {
 		rename { "${it}_$projectName"}
 	}
 }
+
+tasks.named('sourcesJar', Jar).configure {
+	archiveFileName = "${project.mod_id}-${project.mod_version}+${project.minecraft_version}-sources.jar"
+}
+
 publishing {
 	publications {
 		create("mavenJava", MavenPublication) {
 			from components.java
 		}
 	}
-
 	repositories {}
 }

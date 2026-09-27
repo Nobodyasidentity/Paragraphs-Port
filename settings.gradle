@@ -8,4 +8,4 @@ pluginManagement {
 		gradlePluginPortal()
 	}
 }
-rootProject.name = 'paragraphs-port'
+rootProject.name = 'paragraphs_port'
