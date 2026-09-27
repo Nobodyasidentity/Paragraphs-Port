@@ -10,15 +10,17 @@ repositories {}
 
 dependencies {
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	implementation "net.fabricmc:fabric-loader:${project.loader_version}"
+	implementation "net.fabricmc:fabric-loader:${project.fabric_version}"
 }
 
 processResources {
-	def version = project.version
-	inputs.property "version", version
-
-	filesMatching("fabric.mod.json") {
-		expand "version": version
+	def versionProperties = [
+		"version": project.version,
+		"minecraft_version": project.minecraft_version
+	]
+	inputs.properties versionProperties
+	filesMatching(["fabric.mod.json", "META-INF/neoforge.mods.toml", "META-INF/mods.toml"]) {
+		expand versionProperties
 	}
 }
 

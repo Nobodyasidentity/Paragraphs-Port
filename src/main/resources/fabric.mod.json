@@ -11,13 +11,13 @@
 	"environment": "*",
 	"entrypoints": {
 		"main": [
-			"io.github.nobodyasidentity.paragraphs.ParagraphsPort"
+			"io.github.nobodyasidentity.paragraphs.ParagraphsPortFabric"
 		]
 	},
 	"mixins": [
 		"paragraphs-port.mixins.json"
 	],
 	"depends": {
-		"minecraft": ">=26.1"
+		"minecraft": ">=${minecraft_version}"
 	}
 }

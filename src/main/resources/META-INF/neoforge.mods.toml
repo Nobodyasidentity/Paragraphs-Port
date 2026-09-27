@@ -1,0 +1,31 @@
+modLoader="javafml"
+loaderVersion="[1,)"
+license="ARR"
+issueTrackerURL="https://github.com/Nobodyasidentity/Paragraphs-Port/issues"
+
+[[mods]]
+modId="paragraphs_port"
+version="${version}"
+displayName="Paragraphs port"
+description='''
+Lets you type illegal characters
+'''
+authors="Nobodyasidentity"
+logoFile="icon.png"
+
+[[mixins]]
+config="paragraphs-port.mixins.json"
+
+[[dependencies."paragraphs_port"]]
+modId="minecraft"
+mandatory=false
+versionRange="[${minecraft_version},)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies."paragraphs_port"]]
+modId="neoforge"
+mandatory=false
+versionRange="[26.1.0,)"
+ordering="NONE"
+side="BOTH"
