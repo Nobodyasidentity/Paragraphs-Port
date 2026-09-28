@@ -16,4 +16,4 @@ No client, no server: that's just vanilla
 ```
 
 ## Developer info
-Everything inside `net/` and `org/` is excluded from the final JAR as they are just there so that the Fabric compiler won't complain.
+Everything inside `net/` is excluded from the final JAR as they are just there so that the Fabric compiler won't complain.
